@@ -1,0 +1,21 @@
+loop:
+  pre_flight_check:
+    - conditions: []
+      actions:
+      - type: "secure"
+        name: "secure_rc_on"
+      - type: "secure"
+        name: "secure_drone_on"
+      - type: "dronenodecore"
+        name: "load_mission_plan"
+      - type: "simple"
+        name: "upload_mission_plan"
+      - type: "secure"
+        name: "secure_unlock_bars"
+      - type: "simple"
+        name: "start_mission_plan"
+      failback:
+      - type: "dronenodecore"
+      - name: "set_system_state"
+      - payload: "idle"
+    
